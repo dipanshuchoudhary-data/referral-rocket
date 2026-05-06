@@ -14,16 +14,109 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          referral_code: string
+          referred_by: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          referral_code: string
+          referred_by?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          referral_code?: string
+          referred_by?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_referred_by_fkey"
+            columns: ["referred_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      referrals: {
+        Row: {
+          area: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          property_type: string | null
+          referee_email: string | null
+          referee_name: string
+          referee_phone: string
+          referrer_id: string
+          reward_amount: number
+          status: Database["public"]["Enums"]["referral_status"]
+          updated_at: string
+        }
+        Insert: {
+          area?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          property_type?: string | null
+          referee_email?: string | null
+          referee_name: string
+          referee_phone: string
+          referrer_id: string
+          reward_amount?: number
+          status?: Database["public"]["Enums"]["referral_status"]
+          updated_at?: string
+        }
+        Update: {
+          area?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          property_type?: string | null
+          referee_email?: string | null
+          referee_name?: string
+          referee_phone?: string
+          referrer_id?: string
+          reward_amount?: number
+          status?: Database["public"]["Enums"]["referral_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_referrer_id_fkey"
+            columns: ["referrer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_referral_code: { Args: never; Returns: string }
     }
     Enums: {
-      [_ in never]: never
+      referral_status: "pending" | "verified" | "booked" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +243,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      referral_status: ["pending", "verified", "booked", "rejected"],
+    },
   },
 } as const
