@@ -19,6 +19,7 @@ import {
   Copy, IndianRupee, Plus, Share2, Users, CheckCircle2, Clock, XCircle, Trophy,
   TrendingUp, Award, Send, Mail, MessageCircle, ShieldCheck,
 } from "lucide-react";
+import { GamificationPanel } from "@/components/gamification-panel";
 
 export const Route = createFileRoute("/dashboard")({ component: Dashboard });
 
