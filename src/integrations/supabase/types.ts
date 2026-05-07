@@ -14,36 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
+      lucky_draws: {
+        Row: {
+          created_at: string
+          id: string
+          prize_amount: number
+          prize_kind: string
+          prize_label: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          prize_amount?: number
+          prize_kind: string
+          prize_label: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          prize_amount?: number
+          prize_kind?: string
+          prize_label?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
           email: string | null
           full_name: string | null
           id: string
+          last_referral_date: string | null
+          level: number
+          lucky_tickets: number
           phone: string | null
           referral_code: string
           referred_by: string | null
+          streak_days: number
           updated_at: string
+          xp: number
         }
         Insert: {
           created_at?: string
           email?: string | null
           full_name?: string | null
           id: string
+          last_referral_date?: string | null
+          level?: number
+          lucky_tickets?: number
           phone?: string | null
           referral_code: string
           referred_by?: string | null
+          streak_days?: number
           updated_at?: string
+          xp?: number
         }
         Update: {
           created_at?: string
           email?: string | null
           full_name?: string | null
           id?: string
+          last_referral_date?: string | null
+          level?: number
+          lucky_tickets?: number
           phone?: string | null
           referral_code?: string
           referred_by?: string | null
+          streak_days?: number
           updated_at?: string
+          xp?: number
         }
         Relationships: [
           {
@@ -193,6 +235,8 @@ export type Database = {
         }
         Returns: boolean
       }
+      level_for_xp: { Args: { _xp: number }; Returns: number }
+      spin_lucky: { Args: never; Returns: Json }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
