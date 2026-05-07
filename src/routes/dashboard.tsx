@@ -19,6 +19,7 @@ import {
   Copy, IndianRupee, Plus, Share2, Users, CheckCircle2, Clock, XCircle, Trophy,
   TrendingUp, Award, Send, Mail, MessageCircle, ShieldCheck,
 } from "lucide-react";
+import { GamificationPanel } from "@/components/gamification-panel";
 
 export const Route = createFileRoute("/dashboard")({ component: Dashboard });
 
@@ -208,6 +209,9 @@ function Dashboard() {
             </div>
           </div>
         </Card>
+
+        {/* Gamification */}
+        <GamificationPanel />
 
         {/* Stats grid */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
