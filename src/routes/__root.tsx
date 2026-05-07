@@ -15,8 +15,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Gharpayy Referrals — Earn ₹500 per booking" },
+      { title: "Gharpayy Referral" },
       { name: "description", content: "Refer friends looking for PGs, flats or homes in Bangalore. Earn ₹50 on lead verification, ₹500 on booking." },
+      { property: "og:title", content: "Gharpayy Referral" },
+      { name: "twitter:title", content: "Gharpayy Referral" },
+      { property: "og:description", content: "Refer friends looking for PGs, flats or homes in Bangalore. Earn ₹50 on lead verification, ₹500 on booking." },
+      { name: "twitter:description", content: "Refer friends looking for PGs, flats or homes in Bangalore. Earn ₹50 on lead verification, ₹500 on booking." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/db1db724-9f7e-48a7-a5ef-9c301f4c0327/id-preview-ddb8ccc7--ef6a4aed-d9c7-4e66-b633-78d780ab9aff.lovable.app-1778096349129.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/db1db724-9f7e-48a7-a5ef-9c301f4c0327/id-preview-ddb8ccc7--ef6a4aed-d9c7-4e66-b633-78d780ab9aff.lovable.app-1778096349129.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
