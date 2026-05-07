@@ -210,6 +210,9 @@ function Dashboard() {
           </div>
         </Card>
 
+        {/* Gamification */}
+        <GamificationPanel />
+
         {/* Stats grid */}
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard icon={Users} label="Total referrals" value={stats.total} sub={`${stats.pending} pending`} tone="default" />
