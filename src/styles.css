@@ -38,7 +38,7 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.875rem;
   --background: oklch(0.99 0.005 80);
   --foreground: oklch(0.18 0.02 260);
   --card: oklch(1 0 0);
@@ -65,8 +65,12 @@
   --ring: oklch(0.7 0.19 45);
   --gradient-hero: linear-gradient(135deg, oklch(0.7 0.19 45) 0%, oklch(0.78 0.17 55) 50%, oklch(0.85 0.13 70) 100%);
   --gradient-card: linear-gradient(135deg, oklch(1 0 0) 0%, oklch(0.98 0.01 60) 100%);
-  --shadow-elegant: 0 10px 40px -12px oklch(0.7 0.19 45 / 0.25);
+  --gradient-mesh: radial-gradient(at 20% 10%, oklch(0.85 0.13 70 / 0.35) 0, transparent 50%),
+                   radial-gradient(at 80% 0%, oklch(0.78 0.17 55 / 0.25) 0, transparent 50%),
+                   radial-gradient(at 90% 80%, oklch(0.7 0.19 45 / 0.2) 0, transparent 50%);
+  --shadow-elegant: 0 20px 60px -20px oklch(0.7 0.19 45 / 0.35);
   --shadow-soft: 0 4px 20px -4px oklch(0.18 0.02 260 / 0.08);
+  --shadow-glow: 0 0 50px oklch(0.78 0.17 55 / 0.45);
 }
 
 .dark {
@@ -98,11 +102,38 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { font-family: var(--font-sans); }
+  html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv11", "ss01";
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-mesh { background-image: var(--gradient-mesh); }
+  .bg-hero-gradient { background-image: var(--gradient-hero); }
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  @keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+  @keyframes shimmer {
+    0% { background-position: -200% 0 }
+    100% { background-position: 200% 0 }
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
 }
