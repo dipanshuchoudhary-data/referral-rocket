@@ -57,10 +57,14 @@ export type Database = {
       }
       referrals: {
         Row: {
+          admin_note: string | null
           area: string | null
+          booked_at: string | null
           created_at: string
           id: string
           notes: string | null
+          paid_at: string | null
+          payout_status: string
           property_type: string | null
           referee_email: string | null
           referee_name: string
@@ -69,12 +73,17 @@ export type Database = {
           reward_amount: number
           status: Database["public"]["Enums"]["referral_status"]
           updated_at: string
+          verified_at: string | null
         }
         Insert: {
+          admin_note?: string | null
           area?: string | null
+          booked_at?: string | null
           created_at?: string
           id?: string
           notes?: string | null
+          paid_at?: string | null
+          payout_status?: string
           property_type?: string | null
           referee_email?: string | null
           referee_name: string
@@ -83,12 +92,17 @@ export type Database = {
           reward_amount?: number
           status?: Database["public"]["Enums"]["referral_status"]
           updated_at?: string
+          verified_at?: string | null
         }
         Update: {
+          admin_note?: string | null
           area?: string | null
+          booked_at?: string | null
           created_at?: string
           id?: string
           notes?: string | null
+          paid_at?: string | null
+          payout_status?: string
           property_type?: string | null
           referee_email?: string | null
           referee_name?: string
@@ -97,6 +111,7 @@ export type Database = {
           reward_amount?: number
           status?: Database["public"]["Enums"]["referral_status"]
           updated_at?: string
+          verified_at?: string | null
         }
         Relationships: [
           {
@@ -108,14 +123,78 @@ export type Database = {
           },
         ]
       }
+      rewards_ledger: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          reason: string
+          referral_id: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          reason: string
+          referral_id?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          reason?: string
+          referral_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rewards_ledger_referral_id_fkey"
+            columns: ["referral_id"]
+            isOneToOne: false
+            referencedRelation: "referrals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
       generate_referral_code: { Args: never; Returns: string }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
+      app_role: "admin" | "moderator" | "user"
       referral_status: "pending" | "verified" | "booked" | "rejected"
     }
     CompositeTypes: {
@@ -244,6 +323,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      app_role: ["admin", "moderator", "user"],
       referral_status: ["pending", "verified", "booked", "rejected"],
     },
   },
