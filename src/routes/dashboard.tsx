@@ -20,6 +20,7 @@ import {
   TrendingUp, Award, Send, Mail, MessageCircle, ShieldCheck,
 } from "lucide-react";
 import { GamificationPanel } from "@/components/gamification-panel";
+import { MobileTabBar } from "@/components/mobile-tabbar";
 
 export const Route = createFileRoute("/dashboard")({ component: Dashboard });
 
@@ -135,7 +136,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-muted/20">
+    <div className="min-h-screen bg-muted/20 pb-20 lg:pb-0">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-8">
         {/* Greeting + actions */}

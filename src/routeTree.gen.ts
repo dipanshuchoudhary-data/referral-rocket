@@ -9,14 +9,109 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VisitsRouteImport } from './routes/visits'
+import { Route as TeamsRouteImport } from './routes/teams'
+import { Route as StreakRouteImport } from './routes/streak'
+import { Route as SquadBattlesRouteImport } from './routes/squad-battles'
+import { Route as PgRouteImport } from './routes/pg'
+import { Route as PersonaRouteImport } from './routes/persona'
+import { Route as PayoutSetupRouteImport } from './routes/payout-setup'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LuckyDrawRouteImport } from './routes/lucky-draw'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as FlashRouteImport } from './routes/flash'
+import { Route as EarningsRouteImport } from './routes/earnings'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ChallengesRouteImport } from './routes/challenges'
+import { Route as ChainRouteImport } from './routes/chain'
+import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AreasRouteImport } from './routes/areas'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ActivityRouteImport } from './routes/activity'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeamsSlugRouteImport } from './routes/teams.$slug'
+import { Route as ProfileCodeRouteImport } from './routes/profile.$code'
+import { Route as PgIdRouteImport } from './routes/pg.$id'
 
+const VisitsRoute = VisitsRouteImport.update({
+  id: '/visits',
+  path: '/visits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamsRoute = TeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StreakRoute = StreakRouteImport.update({
+  id: '/streak',
+  path: '/streak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SquadBattlesRoute = SquadBattlesRouteImport.update({
+  id: '/squad-battles',
+  path: '/squad-battles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PgRoute = PgRouteImport.update({
+  id: '/pg',
+  path: '/pg',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonaRoute = PersonaRouteImport.update({
+  id: '/persona',
+  path: '/persona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayoutSetupRoute = PayoutSetupRouteImport.update({
+  id: '/payout-setup',
+  path: '/payout-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LuckyDrawRoute = LuckyDrawRouteImport.update({
+  id: '/lucky-draw',
+  path: '/lucky-draw',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlashRoute = FlashRouteImport.update({
+  id: '/flash',
+  path: '/flash',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EarningsRoute = EarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengesRoute = ChallengesRouteImport.update({
+  id: '/challenges',
+  path: '/challenges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChainRoute = ChainRouteImport.update({
+  id: '/chain',
+  path: '/chain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorRoute = CalculatorRouteImport.update({
+  id: '/calculator',
+  path: '/calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -24,9 +119,19 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AreasRoute = AreasRouteImport.update({
+  id: '/areas',
+  path: '/areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -34,48 +139,319 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamsSlugRoute = TeamsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TeamsRoute,
+} as any)
+const ProfileCodeRoute = ProfileCodeRouteImport.update({
+  id: '/profile/$code',
+  path: '/profile/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PgIdRoute = PgIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PgRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/admin': typeof AdminRoute
+  '/areas': typeof AreasRoute
   '/auth': typeof AuthRoute
+  '/calculator': typeof CalculatorRoute
+  '/chain': typeof ChainRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/earnings': typeof EarningsRoute
+  '/flash': typeof FlashRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/lucky-draw': typeof LuckyDrawRoute
+  '/notifications': typeof NotificationsRoute
+  '/payout-setup': typeof PayoutSetupRoute
+  '/persona': typeof PersonaRoute
+  '/pg': typeof PgRouteWithChildren
+  '/squad-battles': typeof SquadBattlesRoute
+  '/streak': typeof StreakRoute
+  '/teams': typeof TeamsRouteWithChildren
+  '/visits': typeof VisitsRoute
+  '/pg/$id': typeof PgIdRoute
+  '/profile/$code': typeof ProfileCodeRoute
+  '/teams/$slug': typeof TeamsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/admin': typeof AdminRoute
+  '/areas': typeof AreasRoute
   '/auth': typeof AuthRoute
+  '/calculator': typeof CalculatorRoute
+  '/chain': typeof ChainRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/earnings': typeof EarningsRoute
+  '/flash': typeof FlashRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/lucky-draw': typeof LuckyDrawRoute
+  '/notifications': typeof NotificationsRoute
+  '/payout-setup': typeof PayoutSetupRoute
+  '/persona': typeof PersonaRoute
+  '/pg': typeof PgRouteWithChildren
+  '/squad-battles': typeof SquadBattlesRoute
+  '/streak': typeof StreakRoute
+  '/teams': typeof TeamsRouteWithChildren
+  '/visits': typeof VisitsRoute
+  '/pg/$id': typeof PgIdRoute
+  '/profile/$code': typeof ProfileCodeRoute
+  '/teams/$slug': typeof TeamsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
   '/admin': typeof AdminRoute
+  '/areas': typeof AreasRoute
   '/auth': typeof AuthRoute
+  '/calculator': typeof CalculatorRoute
+  '/chain': typeof ChainRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/earnings': typeof EarningsRoute
+  '/flash': typeof FlashRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/lucky-draw': typeof LuckyDrawRoute
+  '/notifications': typeof NotificationsRoute
+  '/payout-setup': typeof PayoutSetupRoute
+  '/persona': typeof PersonaRoute
+  '/pg': typeof PgRouteWithChildren
+  '/squad-battles': typeof SquadBattlesRoute
+  '/streak': typeof StreakRoute
+  '/teams': typeof TeamsRouteWithChildren
+  '/visits': typeof VisitsRoute
+  '/pg/$id': typeof PgIdRoute
+  '/profile/$code': typeof ProfileCodeRoute
+  '/teams/$slug': typeof TeamsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/auth' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/admin'
+    | '/areas'
+    | '/auth'
+    | '/calculator'
+    | '/chain'
+    | '/challenges'
+    | '/dashboard'
+    | '/earnings'
+    | '/flash'
+    | '/leaderboard'
+    | '/lucky-draw'
+    | '/notifications'
+    | '/payout-setup'
+    | '/persona'
+    | '/pg'
+    | '/squad-battles'
+    | '/streak'
+    | '/teams'
+    | '/visits'
+    | '/pg/$id'
+    | '/profile/$code'
+    | '/teams/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/auth' | '/dashboard'
-  id: '__root__' | '/' | '/admin' | '/auth' | '/dashboard'
+  to:
+    | '/'
+    | '/activity'
+    | '/admin'
+    | '/areas'
+    | '/auth'
+    | '/calculator'
+    | '/chain'
+    | '/challenges'
+    | '/dashboard'
+    | '/earnings'
+    | '/flash'
+    | '/leaderboard'
+    | '/lucky-draw'
+    | '/notifications'
+    | '/payout-setup'
+    | '/persona'
+    | '/pg'
+    | '/squad-battles'
+    | '/streak'
+    | '/teams'
+    | '/visits'
+    | '/pg/$id'
+    | '/profile/$code'
+    | '/teams/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/admin'
+    | '/areas'
+    | '/auth'
+    | '/calculator'
+    | '/chain'
+    | '/challenges'
+    | '/dashboard'
+    | '/earnings'
+    | '/flash'
+    | '/leaderboard'
+    | '/lucky-draw'
+    | '/notifications'
+    | '/payout-setup'
+    | '/persona'
+    | '/pg'
+    | '/squad-battles'
+    | '/streak'
+    | '/teams'
+    | '/visits'
+    | '/pg/$id'
+    | '/profile/$code'
+    | '/teams/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
   AdminRoute: typeof AdminRoute
+  AreasRoute: typeof AreasRoute
   AuthRoute: typeof AuthRoute
+  CalculatorRoute: typeof CalculatorRoute
+  ChainRoute: typeof ChainRoute
+  ChallengesRoute: typeof ChallengesRoute
   DashboardRoute: typeof DashboardRoute
+  EarningsRoute: typeof EarningsRoute
+  FlashRoute: typeof FlashRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  LuckyDrawRoute: typeof LuckyDrawRoute
+  NotificationsRoute: typeof NotificationsRoute
+  PayoutSetupRoute: typeof PayoutSetupRoute
+  PersonaRoute: typeof PersonaRoute
+  PgRoute: typeof PgRouteWithChildren
+  SquadBattlesRoute: typeof SquadBattlesRoute
+  StreakRoute: typeof StreakRoute
+  TeamsRoute: typeof TeamsRouteWithChildren
+  VisitsRoute: typeof VisitsRoute
+  ProfileCodeRoute: typeof ProfileCodeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/visits': {
+      id: '/visits'
+      path: '/visits'
+      fullPath: '/visits'
+      preLoaderRoute: typeof VisitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teams': {
+      id: '/teams'
+      path: '/teams'
+      fullPath: '/teams'
+      preLoaderRoute: typeof TeamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/streak': {
+      id: '/streak'
+      path: '/streak'
+      fullPath: '/streak'
+      preLoaderRoute: typeof StreakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/squad-battles': {
+      id: '/squad-battles'
+      path: '/squad-battles'
+      fullPath: '/squad-battles'
+      preLoaderRoute: typeof SquadBattlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pg': {
+      id: '/pg'
+      path: '/pg'
+      fullPath: '/pg'
+      preLoaderRoute: typeof PgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/persona': {
+      id: '/persona'
+      path: '/persona'
+      fullPath: '/persona'
+      preLoaderRoute: typeof PersonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payout-setup': {
+      id: '/payout-setup'
+      path: '/payout-setup'
+      fullPath: '/payout-setup'
+      preLoaderRoute: typeof PayoutSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lucky-draw': {
+      id: '/lucky-draw'
+      path: '/lucky-draw'
+      fullPath: '/lucky-draw'
+      preLoaderRoute: typeof LuckyDrawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flash': {
+      id: '/flash'
+      path: '/flash'
+      fullPath: '/flash'
+      preLoaderRoute: typeof FlashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/earnings': {
+      id: '/earnings'
+      path: '/earnings'
+      fullPath: '/earnings'
+      preLoaderRoute: typeof EarningsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenges': {
+      id: '/challenges'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chain': {
+      id: '/chain'
+      path: '/chain'
+      fullPath: '/chain'
+      preLoaderRoute: typeof ChainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculator': {
+      id: '/calculator'
+      path: '/calculator'
+      fullPath: '/calculator'
+      preLoaderRoute: typeof CalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -85,11 +461,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/areas': {
+      id: '/areas'
+      path: '/areas'
+      fullPath: '/areas'
+      preLoaderRoute: typeof AreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -99,14 +489,73 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teams/$slug': {
+      id: '/teams/$slug'
+      path: '/$slug'
+      fullPath: '/teams/$slug'
+      preLoaderRoute: typeof TeamsSlugRouteImport
+      parentRoute: typeof TeamsRoute
+    }
+    '/profile/$code': {
+      id: '/profile/$code'
+      path: '/profile/$code'
+      fullPath: '/profile/$code'
+      preLoaderRoute: typeof ProfileCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pg/$id': {
+      id: '/pg/$id'
+      path: '/$id'
+      fullPath: '/pg/$id'
+      preLoaderRoute: typeof PgIdRouteImport
+      parentRoute: typeof PgRoute
+    }
   }
 }
 
+interface PgRouteChildren {
+  PgIdRoute: typeof PgIdRoute
+}
+
+const PgRouteChildren: PgRouteChildren = {
+  PgIdRoute: PgIdRoute,
+}
+
+const PgRouteWithChildren = PgRoute._addFileChildren(PgRouteChildren)
+
+interface TeamsRouteChildren {
+  TeamsSlugRoute: typeof TeamsSlugRoute
+}
+
+const TeamsRouteChildren: TeamsRouteChildren = {
+  TeamsSlugRoute: TeamsSlugRoute,
+}
+
+const TeamsRouteWithChildren = TeamsRoute._addFileChildren(TeamsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
   AdminRoute: AdminRoute,
+  AreasRoute: AreasRoute,
   AuthRoute: AuthRoute,
+  CalculatorRoute: CalculatorRoute,
+  ChainRoute: ChainRoute,
+  ChallengesRoute: ChallengesRoute,
   DashboardRoute: DashboardRoute,
+  EarningsRoute: EarningsRoute,
+  FlashRoute: FlashRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  LuckyDrawRoute: LuckyDrawRoute,
+  NotificationsRoute: NotificationsRoute,
+  PayoutSetupRoute: PayoutSetupRoute,
+  PersonaRoute: PersonaRoute,
+  PgRoute: PgRouteWithChildren,
+  SquadBattlesRoute: SquadBattlesRoute,
+  StreakRoute: StreakRoute,
+  TeamsRoute: TeamsRouteWithChildren,
+  VisitsRoute: VisitsRoute,
+  ProfileCodeRoute: ProfileCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
